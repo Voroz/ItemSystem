@@ -34,6 +34,6 @@ void Ui::tick() {
 	else if (_moveItemData.dragging == true){
 		_moveItemData.dragging = false;
 		_moveItemData.to = _mouseData.mouseOverSlot;
-		moveItem(*_moveItemData.from, *_moveItemData.to);
+		moveItem(_moveItemData.from, _moveItemData.to);
 	}
 }

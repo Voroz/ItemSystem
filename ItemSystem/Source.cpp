@@ -37,10 +37,10 @@ int main() {
 	Item item;
 	items.push_back(&item);
 
-	initSlots(slots, sf::Vector2i(560, 400), sf::Vector2i(50, 50), sf::Vector2i(2, 2), 4, 3);
+	initSlots(slots, sf::Vector2i(560, 400), sf::Vector2i(50, 50), sf::Vector2i(4, 4), 4, 3);
 
 	slots[0].assignItem(item);
-	moveItem(slots[0], slots[1]);
+	moveItem(&slots[0], &slots[1]);
 
 	item.setWidth(50);
 	item.setHeight(50);
