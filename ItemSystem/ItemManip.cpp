@@ -28,3 +28,25 @@ bool moveItem(ItemSlot* from, ItemSlot* to) {
 	}
 	return swapItem(from, to);
 }
+
+bool initSlots(std::array<ItemSlot, 12>& slots, sf::Vector2i topLeft, sf::Vector2i size, sf::Vector2i separation, int cols, int rows) {
+	if (cols * rows < slots.size()) {
+		return 0;
+	}
+	int currCol = 0;
+	int currRow = 0;
+	for (auto& slot : slots) {
+		slot.setWidth(size.x);
+		slot.setHeight(size.y);
+		slot.setPos(topLeft.x + size.x * currCol + separation.x * currCol, topLeft.y + size.y * currRow + separation.y * currRow);
+		currCol++;
+		if (currCol % cols == 0) {
+			currCol = 0;
+			currRow++;
+		}
+		if (currCol * currRow > cols * rows) {
+			break;
+		}
+	}
+	return 1;
+}

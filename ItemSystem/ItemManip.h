@@ -1,5 +1,6 @@
 #pragma once
 #include "ItemSlot.h"
+#include <array>
 
 // Swaps 2 slots items
 
@@ -10,3 +11,5 @@ bool swapItem(ItemSlot* slot1, ItemSlot* slot2);
 // more error checks.
 
 bool moveItem(ItemSlot* from, ItemSlot* to);
+
+bool initSlots(std::array<ItemSlot, 12>& slots, sf::Vector2i topLeft, sf::Vector2i size, sf::Vector2i separation, int cols, int rows);
