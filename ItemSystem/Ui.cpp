@@ -13,6 +13,17 @@ Ui::~Ui(){
 
 }
 
+void Ui::updateItemPos() {
+	for (auto &slot : _itemSlots) {
+		if (slot.item() == nullptr) {
+			continue;
+		}
+		slot.item()->setPos(slot.pos());
+		int test = 0;
+	}
+}
 void Ui::tick() {
+	updateItemPos();
 	_mouseData.update();
+	std::cout << _mouseData.mouseOverItem << std::endl;
 }

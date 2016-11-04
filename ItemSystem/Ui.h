@@ -14,7 +14,7 @@ struct MoveItemData {
 
 class MouseData {
 public:
-	MouseData(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5> items) :
+	MouseData(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5>& items) :
 		_window(window),
 		_itemSlots(slots),
 		_items(items){
@@ -42,7 +42,7 @@ public:
 			}
 		}
 	}
-	sf::Vector2i position = sf::Mouse::getPosition();
+	sf::Vector2i position;
 	ItemSlot* mouseOverSlot = nullptr;
 	Item* mouseOverItem = nullptr;
 
@@ -57,6 +57,7 @@ class Ui
 public:
 	Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5>& items);
 	~Ui();
+	void updateItemPos();
 	void tick();
 
 private:
