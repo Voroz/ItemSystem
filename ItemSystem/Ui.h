@@ -49,13 +49,13 @@ public:
 private:
 	sf::RenderWindow &_window;
 	std::array<ItemSlot, 12>& _itemSlots;
-	std::array<Item, 5> _items;
+	std::array<Item, 5>& _items;
 };
 
 class Ui
 {
 public:
-	Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5> items);
+	Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5>& items);
 	~Ui();
 	void tick();
 
@@ -64,6 +64,6 @@ private:
 	MouseData _mouseData;
 	sf::RenderWindow &_window;
 	std::array<ItemSlot, 12>& _itemSlots;
-	std::array<Item, 5> _items;
+	std::array<Item, 5>& _items;
 };
 

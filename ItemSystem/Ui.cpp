@@ -1,7 +1,7 @@
 #include "Ui.h"
 
 
-Ui::Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5> items) :
+Ui::Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5>& items) :
 	_window(window),
 	_itemSlots(slots),
 	_items(items),
