@@ -7,6 +7,7 @@ BoundingRect::BoundingRect(){
 	_center = sf::Vector2f(0, 0);
 	_width = 0;
 	_height = 0;
+	_debugColor = sf::Color::Red;
 }
 BoundingRect::~BoundingRect(){
 
@@ -94,7 +95,7 @@ bool BoundingRect::contains(sf::Vector2f point) {
 
 void BoundingRect::debugDraw(sf::RenderWindow &window) {
 	_debugShape.setSize(sf::Vector2f(width(), height()));
-	_debugShape.setOutlineColor(sf::Color::Red);
+	_debugShape.setOutlineColor(_debugColor);
 	_debugShape.setOutlineThickness(1);
 	_debugShape.setFillColor(sf::Color::Transparent);
 	_debugShape.setPosition(pos());

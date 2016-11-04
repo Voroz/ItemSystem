@@ -41,5 +41,6 @@ protected:
 	float _width;
 	float _height;
 	sf::RectangleShape _debugShape;
+	sf::Color _debugColor;
 };
 

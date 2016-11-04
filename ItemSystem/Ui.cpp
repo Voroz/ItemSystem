@@ -1,7 +1,7 @@
 #include "Ui.h"
 
 
-Ui::Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::array<Item, 5>& items) :
+Ui::Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::vector<Item*>& items) :
 	_window(window),
 	_itemSlots(slots),
 	_items(items),
@@ -25,5 +25,4 @@ void Ui::updateItemPos() {
 void Ui::tick() {
 	updateItemPos();
 	_mouseData.update();
-	std::cout << _mouseData.mouseOverItem << std::endl;
 }
