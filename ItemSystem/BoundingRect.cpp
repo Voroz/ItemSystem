@@ -69,10 +69,34 @@ void BoundingRect::setHeight(const float height) {
 }
 
 bool BoundingRect::intersects(BoundingRect rect) {
-	return (right() > rect.left() && left() < rect.right() &&
-		bottom() > rect.top() && top() < rect.bottom());
+	float aLeft = pos().x + left();
+	float aRight = pos().x + right();
+	float aTop = pos().y + top();
+	float aBot = pos().y + bottom();
+
+	float bLeft = rect.pos().x + rect.left();
+	float bRight = rect.pos().x + rect.right();
+	float bTop = rect.pos().y + rect.top();
+	float bBot = rect.pos().y + rect.bottom();
+
+	return (aRight > bLeft && aLeft < bRight &&
+		aBot > bTop && aTop < bBot);
 }
 bool BoundingRect::contains(sf::Vector2f point) {
-	return (point.x > left() && point.x < right() &&
-		point.y > top() && point.y < bottom());
+	float aLeft = pos().x + left();
+	float aRight = pos().x + right();
+	float aTop = pos().y + top();
+	float aBot = pos().y + bottom();
+
+	return (point.x > aLeft && point.x < aRight &&
+		point.y > aTop && point.y < aBot);
+}
+
+void BoundingRect::debugDraw(sf::RenderWindow &window) {
+	_debugShape.setSize(sf::Vector2f(width(), height()));
+	_debugShape.setOutlineColor(sf::Color::Red);
+	_debugShape.setOutlineThickness(1);
+	_debugShape.setFillColor(sf::Color::Transparent);
+	_debugShape.setPosition(pos());
+	window.draw(_debugShape);
 }
