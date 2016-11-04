@@ -25,6 +25,8 @@ void Ui::updateItemPos() {
 void Ui::tick() {
 	updateItemPos();
 	_mouseData.update();
+
+	// Move around items in inventory slots
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (_moveItemData.dragging == false) {
 			_moveItemData.dragging = true;

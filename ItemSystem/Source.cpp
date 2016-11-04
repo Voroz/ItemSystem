@@ -34,17 +34,18 @@ bool initSlots(std::array<ItemSlot, 12>& slots, sf::Vector2i topLeft, sf::Vector
 int main() {
 	std::array<ItemSlot, 12> slots;
 	std::vector<Item*> items;
-	Item item;
-	items.push_back(&item);
+	items.push_back(new Item);
+	items.push_back(new Item);
 
 	initSlots(slots, sf::Vector2i(560, 400), sf::Vector2i(50, 50), sf::Vector2i(4, 4), 4, 3);
 
-	slots[0].assignItem(item);
-	moveItem(&slots[0], &slots[1]);
+	slots[0].assignItem(*items[0]);
+	slots[5].assignItem(*items[1]);
 
-	item.setWidth(50);
-	item.setHeight(50);
-	item.setPos(sf::Vector2f(200, 300));
+	items[0]->setWidth(50);
+	items[0]->setHeight(50);
+	items[1]->setWidth(50);
+	items[1]->setHeight(50);
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Item System");
 
@@ -72,5 +73,9 @@ int main() {
 		window.display();
 	}
 
+	// Delete allocated item memory before closing
+	for (auto item : items) {
+		delete item;
+	}
 	return 0;
 }
