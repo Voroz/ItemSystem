@@ -33,7 +33,7 @@ public:
 	bool intersects(BoundingRect rect);
 	bool contains(sf::Vector2f point);
 
-	void debugDraw(sf::RenderWindow &window);
+	virtual void debugDraw(sf::RenderWindow &window);
 
 protected:
 	sf::Vector2f _position;

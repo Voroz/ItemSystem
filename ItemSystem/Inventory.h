@@ -1,10 +1,10 @@
 #pragma once
 #include "ItemManip.h"
 
-class Inventory
+class Inventory : public BoundingRect
 {
 public:
-	Inventory();
+	Inventory(sf::Vector2i pos, sf::Vector2i size);
 	~Inventory();
 
 	std::array<ItemSlot, 12>& slots();
@@ -12,5 +12,8 @@ public:
 
 private:
 	std::array<ItemSlot, 12> _itemSlots;
+	sf::Vector2i _separation;
+	int _cols;
+	int _rows;
 };
 

@@ -17,7 +17,7 @@ int main() {
 	items.push_back(new Item);
 	items.push_back(new Item);
 
-	Inventory inventory;	
+	Inventory inventory(sf::Vector2i(560, 400), sf::Vector2i(212, 158));
 
 	inventory.slots()[0].assignItem(*items[0]);
 	inventory.slots()[1].assignItem(*items[1]);
