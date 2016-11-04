@@ -10,6 +10,7 @@
 struct MoveItemData {
 	ItemSlot* from = nullptr;
 	ItemSlot* to = nullptr;
+	bool dragging = false;
 };
 
 class MouseData {

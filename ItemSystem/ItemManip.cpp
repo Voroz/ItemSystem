@@ -3,6 +3,9 @@
 // Swaps 2 slots items
 
 bool swapItem(ItemSlot& slot1, ItemSlot& slot2) {
+	if (&slot1 == nullptr || &slot2 == nullptr) {
+		return 0;
+	}
 	if (&slot1 == &slot2) {
 		return 0;
 	}
@@ -20,7 +23,7 @@ bool swapItem(ItemSlot& slot1, ItemSlot& slot2) {
 // more error checks.
 
 bool moveItem(ItemSlot& from, ItemSlot& to) {
-	if (&from == nullptr) {
+	if (from.item() == nullptr) {
 		return 0;
 	}
 	return swapItem(from, to);

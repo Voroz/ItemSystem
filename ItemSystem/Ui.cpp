@@ -25,4 +25,15 @@ void Ui::updateItemPos() {
 void Ui::tick() {
 	updateItemPos();
 	_mouseData.update();
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		if (_moveItemData.dragging == false) {
+			_moveItemData.dragging = true;
+			_moveItemData.from = _mouseData.mouseOverSlot;
+		}
+	}
+	else if (_moveItemData.dragging == true){
+		_moveItemData.dragging = false;
+		_moveItemData.to = _mouseData.mouseOverSlot;
+		moveItem(*_moveItemData.from, *_moveItemData.to);
+	}
 }
