@@ -32,6 +32,10 @@ void Ui::tick() {
 			_moveItemData.dragging = true;
 			_moveItemData.from = _mouseData.mouseOverSlot;
 		}
+		if (_moveItemData.from != nullptr && _moveItemData.from->item() != nullptr && _mouseData.leftButtonDraggedDistance >= 6) {
+			Item* item = _moveItemData.from->item();
+			item->setPos(_mouseData.position.x - item->width() / 2, _mouseData.position.y - item->height() / 2);
+		}
 	}
 	else if (_moveItemData.dragging == true){
 		_moveItemData.dragging = false;

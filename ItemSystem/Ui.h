@@ -43,8 +43,21 @@ public:
 				break;
 			}
 		}
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			sf::Vector2i mouseTraveledDistance = position - _previousPos;
+			float x = mouseTraveledDistance.x;
+			float y = mouseTraveledDistance.y;
+			leftButtonDraggedDistance += sqrt(x*x + y*y);
+		}
+		else {
+			leftButtonDraggedDistance = 0;
+		}
+		_previousPos = position;
 	}
+
 	sf::Vector2i position;
+	float leftButtonDraggedDistance = 0;
 	ItemSlot* mouseOverSlot = nullptr;
 	Item* mouseOverItem = nullptr;
 
@@ -52,6 +65,7 @@ private:
 	sf::RenderWindow &_window;
 	Inventory& _inventory;
 	std::vector<Item*>& _items;
+	sf::Vector2i _previousPos = sf::Mouse::getPosition(_window);
 };
 
 class Ui
