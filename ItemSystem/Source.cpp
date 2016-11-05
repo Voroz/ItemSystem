@@ -17,7 +17,7 @@ int main() {
 	items.push_back(new Item);
 	items.push_back(new Item);
 
-	Inventory inventory(sf::Vector2i(560, 400), sf::Vector2i(212, 158));
+	Inventory inventory(sf::Vector2i(560, 400), sf::Vector2i(212, 158), 12, 4, 3);
 
 	inventory.slots()[0].assignItem(*items[0]);
 	inventory.slots()[1].assignItem(*items[1]);
@@ -29,7 +29,7 @@ int main() {
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Item System");
 
-	Ui ui(window, inventory.slots(), items);
+	Ui ui(window, inventory, items);
 
 	// run the program as long as the window is open
 	while (window.isOpen()){

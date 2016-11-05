@@ -4,14 +4,14 @@
 class Inventory : public BoundingRect
 {
 public:
-	Inventory(sf::Vector2i pos, sf::Vector2i size);
+	Inventory(sf::Vector2i pos, sf::Vector2i size, const int nrofSlots, const int cols, const int rows);
 	~Inventory();
 
-	std::array<ItemSlot, 12>& slots();
+	std::vector<ItemSlot>& slots();
 	void debugDraw(sf::RenderWindow& window);
 
 private:
-	std::array<ItemSlot, 12> _itemSlots;
+	std::vector<ItemSlot> _itemSlots;
 	sf::Vector2i _separation;
 	int _cols;
 	int _rows;

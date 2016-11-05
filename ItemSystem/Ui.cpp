@@ -1,11 +1,11 @@
 #include "Ui.h"
 
 
-Ui::Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::vector<Item*>& items) :
+Ui::Ui(sf::RenderWindow &window, Inventory& inventory, std::vector<Item*>& items) :
 	_window(window),
-	_itemSlots(slots),
+	_inventory(inventory),
 	_items(items),
-	_mouseData(window, slots, items){
+	_mouseData(window, inventory, items){
 
 }
 
@@ -14,7 +14,7 @@ Ui::~Ui(){
 }
 
 void Ui::updateItemPos() {
-	for (auto &slot : _itemSlots) {
+	for (auto &slot : _inventory.slots()) {
 		if (slot.item() == nullptr) {
 			continue;
 		}

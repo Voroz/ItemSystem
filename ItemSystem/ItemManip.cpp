@@ -29,7 +29,7 @@ bool moveItem(ItemSlot* from, ItemSlot* to) {
 	return swapItem(from, to);
 }
 
-bool initSlots(std::array<ItemSlot, 12>& slots, sf::Vector2i topLeft, sf::Vector2i size, sf::Vector2i separation, int cols, int rows) {
+bool initSlots(std::vector<ItemSlot>& slots, sf::Vector2i topLeft, sf::Vector2i size, sf::Vector2i separation, int cols, int rows) {
 	if (cols * rows < slots.size()) {
 		return 0;
 	}

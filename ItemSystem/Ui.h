@@ -1,6 +1,7 @@
 #pragma once
 #include "ItemSlot.h"
 #include "ItemManip.h"
+#include "Inventory.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
@@ -15,9 +16,9 @@ struct MoveItemData {
 
 class MouseData {
 public:
-	MouseData(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::vector<Item*>& items) :
+	MouseData(sf::RenderWindow &window, Inventory& inventory, std::vector<Item*>& items) :
 		_window(window),
-		_itemSlots(slots),
+		_inventory(inventory),
 		_items(items){
 
 	}
@@ -28,7 +29,7 @@ public:
 		position = sf::Mouse::getPosition(_window);
 		
 		mouseOverSlot = nullptr;
-		for (auto &slot : _itemSlots) {
+		for (auto &slot : _inventory.slots()) {
 			if (slot.contains(static_cast<sf::Vector2f>(position))) {
 				mouseOverSlot = &slot;
 				break;
@@ -49,14 +50,14 @@ public:
 
 private:
 	sf::RenderWindow &_window;
-	std::array<ItemSlot, 12>& _itemSlots;
+	Inventory& _inventory;
 	std::vector<Item*>& _items;
 };
 
 class Ui
 {
 public:
-	Ui(sf::RenderWindow &window, std::array<ItemSlot, 12>& slots, std::vector<Item*>& items);
+	Ui(sf::RenderWindow &window, Inventory& inventory, std::vector<Item*>& items);
 	~Ui();
 	void updateItemPos();
 	void tick();
@@ -65,7 +66,7 @@ private:
 	MoveItemData _moveItemData;
 	MouseData _mouseData;
 	sf::RenderWindow &_window;
-	std::array<ItemSlot, 12>& _itemSlots;
+	Inventory& _inventory;
 	std::vector<Item*>& _items;
 };
 
