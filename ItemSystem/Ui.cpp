@@ -28,18 +28,27 @@ void Ui::tick() {
 
 	// Move around items in inventory slots
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		if (_moveItemData.dragging == false) {
-			_moveItemData.dragging = true;
-			_moveItemData.from = _mouseData.mouseOverSlot;
-		}
-		if (_moveItemData.from != nullptr && _moveItemData.from->item() != nullptr && _mouseData.leftButtonDraggedDistance >= 6) {
-			Item* item = _moveItemData.from->item();
-			item->setPos(_mouseData.position.x - item->width() / 2, _mouseData.position.y - item->height() / 2);
+		if (_mouseData.leftButtonDraggedDistance >= 6) {
+			// Set dragging to true and find which slot is being dragged from
+			if (_moveItemData.dragging == false) {
+				_moveItemData.dragging = true;
+				_moveItemData.from = _mouseData.mouseOverSlot;
+			}
+			// Set position of icon to mouse pos
+			if (_moveItemData.from != nullptr && _moveItemData.from->item() != nullptr) {
+				Item* item = _moveItemData.from->item();
+				item->setPos(_mouseData.position.x - item->width() / 2, _mouseData.position.y - item->height() / 2);
+			}
 		}
 	}
-	else if (_moveItemData.dragging == true){
-		_moveItemData.dragging = false;
-		_moveItemData.to = _mouseData.mouseOverSlot;
-		moveItem(_moveItemData.from, _moveItemData.to);
+	else{
+		// Mouse released, set dragging to false and attempt item swap
+		if (_moveItemData.dragging == true) {
+			_moveItemData.dragging = false;
+			if (_moveItemData.from != nullptr && _moveItemData.from->item() != nullptr) {
+				_moveItemData.to = _mouseData.mouseOverSlot;
+				moveItem(_moveItemData.from, _moveItemData.to);
+			}
+		}
 	}
 }
