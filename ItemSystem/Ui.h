@@ -53,6 +53,7 @@ public:
 		else {
 			leftButtonDraggedDistance = 0;
 		}
+		mouseOnInventory = _inventory.contains(static_cast<sf::Vector2f>(position));
 		_previousPos = position;
 	}
 
@@ -60,6 +61,7 @@ public:
 	float leftButtonDraggedDistance = 0;
 	ItemSlot* mouseOverSlot = nullptr;
 	Item* mouseOverItem = nullptr;
+	bool mouseOnInventory = false;
 
 private:
 	sf::RenderWindow &_window;
